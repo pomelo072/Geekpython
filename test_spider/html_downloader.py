@@ -1,6 +1,6 @@
 # coding:UTF-8
-from urllib import request
 import requests
+
 
 class HtmlDownloader(object):
 
