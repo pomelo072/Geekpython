@@ -46,10 +46,9 @@ class HtmlParser(object):
 
 # <a href="forum-1331-2.html">2</a>
         for link in soup.find_all('div', class_='pg'):
-            for lk in link.find_all('a', href= re.match(r'forum-1331-+\d{1,3}.html')):
-                new_url = link.get('href')
-                new_full_url = urllib.parse.urljoin(page_url, new_url)
-                new_urls.add(new_full_url)
+            new_url = link.get('href')
+            new_full_url = urllib.parse.urljoin(page_url, new_url)
+            new_urls.add(new_full_url)
         return new_urls
 
     def _get_new_data(self, page_url, soup):
