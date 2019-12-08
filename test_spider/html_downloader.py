@@ -9,6 +9,7 @@ class HtmlDownloader(object):
             return None
 
         response = requests.get(url)
+        response.encoding = response.apparent_encoding
 
         if response.status_code != 200:
             return None
