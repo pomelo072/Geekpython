@@ -58,7 +58,7 @@ class HtmlParser(object):
         res_data['title'] = title_node.string
 
         summary_node = soup.find('a', class_='s xst')
-        res_data['summary'] = urllib.parse.urljoin('http://www.nxpic.org/module/forum/', summary_node.get('href'))
+        res_data['summary'] = urllib.parse.urljoin(page_url, summary_node.get('href'))
 
         return res_data
 
@@ -88,15 +88,24 @@ class HtmlOutputer(object):
         fout = open('output.html', 'w')
 
         fout.write("<html>")
+        fout.write("\n")
         fout.write("<body>")
+        fout.write("\n")
         fout.write("<tb>")
+        fout.write("\n")
         for data in self.datas:
-            fout.write("<tr>")
+            fout.write("<br>")
+            fout.write("\n")
             fout.write("<td>%s</td>" % data['title'])
+            fout.write("\n")
             fout.write("<td>%s</td>" % data['summary'])
-            fout.write("</tr>")
+            fout.write("\n")
+            fout.write("</br>")
+            fout.write("\n")
         fout.write("</tb>")
+        fout.write("\n")
         fout.write("</body>")
+        fout.write("\n")
         fout.write("</html>")
 
         fout.close()
